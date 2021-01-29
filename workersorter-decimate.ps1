@@ -20,7 +20,7 @@ else
         {
             $fps = $framerate / 2
         }
-        ffmpeg -i $var.FullName -c:v hevc_nvenc -c:a copy -preset losslesshp -tune lossless -level 0 -r $fps $($path+'\'+$tempName)
+        ffmpeg -hwaccel cuvid -i $var.FullName -c:v h264_nvenc -c:a copy -preset losslesshp -tune lossless -level 0 -r $fps $($path+'\'+$tempName)
         $tempFile = Get-ChildItem $($path+'\'+$tempName)
         $tempFile.Length
         if($tempFile.Length -gt 0)
